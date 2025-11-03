@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quehacer del Psicólogo Social ante Consumos Problemáticos</title>
+    <!-- Carga de Tailwind CSS para estilos modernos y responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Configuración de la fuente Inter y estilos base */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Gris claro */
+            transition: background-color 0.3s ease;
+        }
+        .concept-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .concept-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        .concept-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        /* Aumentamos la altura máxima para el contenido desarrollado */
+        .concept-card.active .concept-content {
+            max-height: 800px; 
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .gradient-bg {
+            background-image: linear-gradient(to right, #6366f1, #3b82f6); /* Índigo a Azul */
+        }
+        .icon-svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Encabezado Llamativo con Gráfico Conceptual (Visualización de la Problemática Central) -->
+    <header class="gradient-bg text-white p-8 md:p-12 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                El Quehacer del/a Psicólogo/a Social
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                Reflexiones Conceptuales ante la Problemática de los Consumos y la Desigualdad Mediática.
+            </p>
+
+            <!-- Gráfico de la Problemática Central: Desigualdad en la Narrativa -->
+            <div class="mt-8 bg-white p-6 rounded-lg shadow-xl text-gray-800">
+                <h2 class="text-xl font-bold mb-3 flex items-center">
+                    <svg class="icon-svg text-red-500 mr-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                    El Nudo de la Problemática: Narrativas Desiguales
+                </h2>
+                <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm">
+                    <div class="p-3 bg-red-100 rounded-lg md:w-1/2">
+                        <strong class="text-red-700">Consumo en Sectores Populares:</strong>
+                        <p>Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit).</p>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-lg md:w-1/2">
+                        <strong class="text-blue-700">Consumo en Clases Medias:</strong>
+                        <p>Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span>.</p>
+                    </div>
+                </div>
+                <p class="mt-3 text-xs italic text-gray-600">El rol del psicólogo social es criticar y desnaturalizar esta articulación estructural de la desigualdad.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Principal de Contenido (Conceptos y Autores) -->
+    <main class="max-w-6xl mx-auto p-4 md:p-8">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+            Tres Ejes Conceptuales del Quehacer
+        </h2>
+
+        <!-- Eje 1: Maite Rodrigou (Construccionismo Social) -->
+        <div id="rodrigou-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-indigo-500" onclick="toggleConcept('rodrigou-card')">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-semibold text-indigo-700 flex items-center">
+                    <svg class="icon-svg text-indigo-500 mr-3" viewBox="0 0 24 24">
+                        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-11h2v5h-2v-5zm0 7h2v2h-2v-2z"/>
+                    </svg>
+                    1. Deconstrucción y Crítica Social (Rodrigou)
+                </h3>
+                <span class="text-2xl font-bold text-indigo-500">
+                    +
+                </span>
+            </div>
+
+            <div class="concept-content mt-4" data-open="false">
+                <p class="text-gray-600 mb-4 border-l-4 border-indigo-300 pl-3 italic">
+                    La Psicología Social, desde el enfoque construccionista, plantea que las categorías como "juventud", "consumo problemático" o "peligro social" son <span class="font-bold text-indigo-700">artefactos sociales</span>, productos de intercambios situados histórica y culturalmente.
+                </p>
+                <h4 class="text-lg font-semibold text-indigo-600 mt-6 mb-3 flex items-center">
+                    <span class="text-2xl mr-2">🧐</span> Reflexiones Clave y Tareas
+                </h4>
+                <ul class="space-y-4 text-sm text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 font-bold mr-2 mt-1">🔨</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-indigo-700">Análisis Anti-esencialista y Crítico:</strong>
+                            <p>El psicólogo social debe entender que la realidad psicológica no procede de una "naturaleza humana" sino de nuestras prácticas de objetivación. El consumo no reside solo en la sustancia, sino en <span class="font-semibold">quién consume y desde qué lugar social se narra</span>.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 font-bold mr-2 mt-1">👁️</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-indigo-700">Deconstrucción del Discurso del Déficit:</strong>
+                            <p>El quehacer principal es poner "bajo sospecha" los presupuestos aceptados, realizando una crítica a la producción del discurso del déficit (ej. la criminalización de la juventud empobrecida) que tiene <span class="font-semibold">efectos "devastadores"</span>.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 font-bold mr-2 mt-1">💡</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-indigo-700">Generación de Nuevas Inteligibilidades:</strong>
+                            <p>Crear teorías generativas que busquen <span class="font-semibold">socavar los sistemas predominantes</span>. Se trata de desestabilizar el núcleo de sentido que conecta consumo popular con delito y consumo de clase media con tragedia individual, para abrir la discusión a la dimensión estructural de la desigualdad.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Eje 2: Marisela Montenegro (Intervención Social Situada) -->
+        <div id="montenegro-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-blue-500" onclick="toggleConcept('montenegro-card')">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-semibold text-blue-700 flex items-center">
+                    <svg class="icon-svg text-blue-500 mr-3" viewBox="0 0 24 24">
+                        <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2c1.38 0 2.5-1.12 2.5-2.5S7.38 5 6 5 3.5 6.12 3.5 7.5 4.62 10 6 10zm-2 7h12v-2H4v2zm14 0c-.05 0-.1 0-.15-.02-1.35-.12-2.61-.63-3.66-1.39-.93.63-2.09 1-3.26 1H7.01c-.96 0-1.89-.25-2.73-.72C3.59 15.65 3 14.86 3 14c0-.86.59-1.65 1.28-2.18.84-.47 1.77-.72 2.73-.72h.44c1.17 0 2.33.37 3.26 1 .53.37 1.05.73 1.63 1.04.58.31 1.22.45 1.88.45H18v2z"/>
+                    </svg>
+                    2. Diálogo y Perspectiva Situada (Montenegro)
+                </h3>
+                <span class="text-2xl font-bold text-blue-500">
+                    +
+                </span>
+            </div>
+
+            <div class="concept-content mt-4" data-open="false">
+                <p class="text-gray-600 mb-4 border-l-4 border-blue-300 pl-3 italic">
+                    Montenegro sitúa la problemática como producto de estructuras sociales donde se dan <span class="font-bold text-blue-700">relaciones de opresión</span>. El quehacer se centra en un modelo participativo, incorporando el conocimiento local.
+                </p>
+                <h4 class="text-lg font-semibold text-blue-600 mt-6 mb-3 flex items-center">
+                    <span class="text-2xl mr-2">👥</span> Reflexiones Clave y Tareas
+                </h4>
+                <ul class="space-y-4 text-sm text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-2 mt-1">🗣️</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-blue-700">Agente de Diálogo y Concientización:</strong>
+                            <p>La práctica se aleja de la lógica funcionalista. Define al grupo afectado como <span class="font-semibold">interlocutor y actor privilegiado</span> para la transformación social. El profesional actúa como "catalizador social".</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-2 mt-1">📚</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-blue-700">Articulación de Saberes:</strong>
+                            <p>Principio epistemológico clave: el conocimiento popular y el conocimiento científico deben ser <span class="font-semibold">igualmente relevantes</span>. El diálogo promueve la concientización sobre las relaciones de opresión que sostienen estas situaciones.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-2 mt-1">💪</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-blue-700">Transformación Micro-Social y Empowerment:</strong>
+                            <p>Buscar pequeñas transformaciones en aspectos relevantes de la vida de las personas para lograr <span class="font-semibold">mayores grados de control y poder</span> sobre sus vidas y el medio ambiente que las rodea.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Eje 3: Antar Martínez Guzmán (Involucramiento Colectivo) -->
+        <div id="martinez-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-green-500" onclick="toggleConcept('martinez-card')">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-semibold text-green-700 flex items-center">
+                    <svg class="icon-svg text-green-500 mr-3" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    3. La Metáfora del Involucramiento (Martínez Guzmán)
+                </h3>
+                <span class="text-2xl font-bold text-green-500">
+                    +
+                </span>
+            </div>
+
+            <div class="concept-content mt-4" data-open="false">
+                <p class="text-gray-600 mb-4 border-l-4 border-green-300 pl-3 italic">
+                    Martínez Guzmán propone cambiar la metáfora de la "intervención" (exterioridad, control racional del experto, cuerpo pasivo) por la de <span class="font-bold text-green-700">Involucramiento</span>.
+                </p>
+                <h4 class="text-lg font-semibold text-green-600 mt-6 mb-3 flex items-center">
+                    <span class="text-2xl mr-2">🗺️</span> Reflexiones Clave y Tareas
+                </h4>
+                <ul class="space-y-4 text-sm text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-green-500 font-bold mr-2 mt-1">🚪</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-green-700">Ruptura de la Exterioridad:</strong>
+                            <p>La noción de involucramiento es central para el quehacer crítico. Se busca romper con la relación de exterioridad: el profesional/investigador <span class="font-semibold">no es un agente externo</span> a quien la problemática le es ajena.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 font-bold mr-2 mt-1">🕸️</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-green-700">Posición en el Entramado:</strong>
+                            <p>El desafío es pensarse como <span class="font-semibold">parte de la situación-problema</span> o del escenario social. Se participa en la constitución del campo social, estando "siempre en medio, envuelto en una red que lo constituye". Desafía el rol tradicional de "experto".</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 font-bold mr-2 mt-1">🚀</span>
+                        <div class="flex-1">
+                            <strong class="block text-base text-green-700">Acción Colectiva y Auto-Constitutiva:</strong>
+                            <p>La práctica es colectiva y auto-transformadora. No se asiste a un "sujeto-en-carencia", sino que se generan alianzas y tensiones creativas, reemplazando el protocolo detallado por la <span class="font-semibold">autonomía creativa y la flexibilidad</span>.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Resumen Gráfico y Conclusión -->
+        <div class="mt-10 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <svg class="icon-svg text-gray-600 mr-2" viewBox="0 0 24 24">
+                    <path d="M12 2L4 5v6.09c0 4.54 2.37 8.64 5.5 10.91V22h5v-3.91c3.13-2.27 5.5-6.37 5.5-10.91V5l-8-3zm-1 14H8v-2h3v2zm0-4H8V7h3v5z"/>
+                </svg>
+                Síntesis del Rol Crítico del Psicólogo Social
+            </h3>
+            <p class="text-gray-700 mb-4">El psicólogo social debe transformarse en un agente de:</p>
+            <div class="grid md:grid-cols-3 gap-4 text-center mt-6">
+                <div class="p-4 bg-indigo-200 text-indigo-800 rounded-lg font-bold shadow-sm">
+                    <span class="text-xl">🔨</span> Deconstrucción del Sentido Común Estigmatizante.
+                </div>
+                <div class="p-4 bg-blue-200 text-blue-800 rounded-lg font-bold shadow-sm">
+                    <span class="text-xl">🗣️</span> Diálogo de Saberes Situados y Concientización.
+                </div>
+                <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold shadow-sm">
+                    <span class="text-xl">🕸️</span> Involucramiento Colectivo y Ruptura de la Exterioridad.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script para la Interactividad (Acordeón de Conceptos) -->
+    <script>
+        /**
+         * Función para alternar la visibilidad del contenido de las tarjetas conceptuales.
+         * @param {string} cardId - El ID de la tarjeta a alternar.
+         */
+        function toggleConcept(cardId) {
+            const card = document.getElementById(cardId);
+            const content = card.querySelector('.concept-content');
+            const icon = card.querySelector('span:last-child'); // Selecciona el último span (+/-)
+            const isOpen = card.classList.contains('active');
+
+            // Cierra la tarjeta si ya está abierta
+            if (isOpen) {
+                card.classList.remove('active');
+                content.style.maxHeight = '0';
+                icon.textContent = '+';
+            } else {
+                // Cierra todas las otras tarjetas antes de abrir la seleccionada
+                document.querySelectorAll('.concept-card').forEach(c => {
+                    if (c.id !== cardId) {
+                        c.classList.remove('active');
+                        c.querySelector('.concept-content').style.maxHeight = '0';
+                        // Asegúrate de seleccionar el ícono correcto para cerrar
+                        const otherIcon = c.querySelector('span:last-child');
+                        if (otherIcon) otherIcon.textContent = '+';
+                    }
+                });
+
+                // Abre la tarjeta seleccionada
+                card.classList.add('active');
+                // Ajusta la altura máxima para la transición usando scrollHeight
+                // Nota: se necesita un pequeño delay o un valor generoso para que funcione bien
+                content.style.maxHeight = content.scrollHeight + 50 + "px"; // Se añade un margen de 50px
+                icon.textContent = '–';
+            }
+        }
+
+        // Inicializa el estado después de que la página cargue
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.concept-card').forEach(card => {
+                const content = card.querySelector('.concept-content');
+                // Establece el estado inicial de max-height a 0 para que la transición funcione
+                content.style.maxHeight = '0';
+            });
+        });
+    </script>
+
+</body>
+</html>
