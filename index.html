@@ -8,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Configuración de la fuente Inter y estilos base */
+        html {
+            scroll-behavior: smooth; /* Para el desplazamiento suave de los enlaces de anclaje */
+            /* AJUSTE FINAL PARA COMODIDAD VISUAL: 
+               Aumentado a 85px para crear un espacio de lectura cómodo 
+               entre el título de la sección y la barra de navegación fija. */
+            scroll-padding-top: 85px; 
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Gris claro */
@@ -45,7 +52,7 @@
             fill: currentColor;
         }
 
-        /* Estilos específicos para la imagen de fondo en el apartado 1 (Rodrigou) */
+        /* Estilos específicos para las imágenes de fondo en los apartados */
         #rodrigou-card .concept-content::before {
             content: '';
             position: absolute;
@@ -53,16 +60,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('https://i.postimg.cc/kXdpkrwf/critica-social.png'); /* Imagen para Crítica Social */
+            background-image: url('https://i.postimg.cc/kXdpkrwf/critica-social.png'); /* Crítica Social */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4; /* Transparencia modificada a 0.4 */
-            z-index: 0; /* Asegura que esté detrás del texto */
-            pointer-events: none; /* Permite interactuar con el texto por encima */
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
         }
         
-        /* Estilos específicos para la imagen de fondo en el apartado 2 (Montenegro) */
         #montenegro-card .concept-content::before {
             content: '';
             position: absolute;
@@ -74,12 +80,11 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4; /* Transparencia modificada a 0.4 */
-            z-index: 0; /* Asegura que esté detrás del texto */
+            opacity: 0.4;
+            z-index: 0;
             pointer-events: none;
         }
 
-        /* Estilos específicos para la imagen de fondo en el apartado 3 (Martínez Guzmán) */
         #martinez-card .concept-content::before {
             content: '';
             position: absolute;
@@ -91,8 +96,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4; /* Transparencia modificada a 0.4 */
-            z-index: 0; /* Asegura que esté detrás del texto */
+            opacity: 0.4;
+            z-index: 0;
             pointer-events: none;
         }
 
@@ -106,33 +111,64 @@
 </head>
 <body class="min-h-screen">
 
-    <!-- Encabezado Llamativo con Gráfico Conceptual (Visualización de la Problemática Central) --><header class="gradient-bg text-white p-8 md:p-12 shadow-lg">
-        <div class="max-w-6xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+    <!-- Barra de Navegación Fija (Fondo bg-indigo-50) -->
+    <nav class="fixed top-3 max-w-4xl mx-auto inset-x-0 z-20 shadow-xl bg-indigo-50 rounded-xl border-2 border-black border-gray-500 px-4">
+        <div class="flex justify-between items-center py-2">
+            <!-- Título de la Cátedra (Izquierda) -->
+            <div class="text-lg font-extrabold text-indigo-700 tracking-tight">
+                Cátedra de Psicología Social - UNC
+            </div>
+
+            <!-- Botones de Navegación (Derecha) -->
+            <div class="flex space-x-4">
+                <a href="#inicio" class="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition duration-150 p-2 rounded-lg hover:bg-indigo-100">
+                    Inicio
+                </a>
+                <a href="#ejes" class="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition duration-150 p-2 rounded-lg hover:bg-indigo-100">
+                    Tres Ejes Conceptuales
+                </a>
+                <a href="#rol-critico" class="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition duration-150 p-2 rounded-lg hover:bg-indigo-100">
+                    Rol Crítico
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado Llamativo con Gráfico Conceptual (Visualización de la Problemática Central) -->
+    <header id="inicio" class="gradient-bg text-white p-8 md:p-12 shadow-lg">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 pt-40">
                 El Quehacer del/a Psicólogo/a Social
             </h1>
             <p class="text-xl md:text-2xl font-light opacity-90">
                 Reflexiones Conceptuales ante la Problemática de los Consumos y la Desigualdad Mediática
             </p>
 
-            <!-- Gráfico de la Problemática Central: Desigualdad en la Narrativa --><div class="mt-8 bg-white p-6 rounded-lg shadow-xl text-gray-800">
-                <h2 class="text-xl font-bold mb-3 flex items-center">
+            <!-- Gráfico de la Problemática Central: Narrativas Desiguales -->
+            <div class="mt-8 bg-white p-10 rounded-lg shadow-xl text-gray-800">
+                <h2 class="text-xl font-bold mb-3 flex items-center justify-center">
                     <svg class="icon-svg text-red-500 mr-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                     </svg>
                     El Nudo de la Problemática: Narrativas Desiguales
                 </h2>
-                <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm">
-                    <div class="p-3 bg-red-100 rounded-lg md:w-1/2">
+                
+                <!-- Contenedor con alineación de texto a la izquierda, por lo que quitamos el text-center del padre -->
+                <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm text-left">
+                    <!-- Cuadro 1: Consumo en Sectores Populares (p-20) -->
+                    <div class="p-20 bg-red-100 rounded-lg md:w-1/2 text-left">
                         <strong class="text-red-700">Consumo en Sectores Populares:</strong>
-                        <p>Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit)</p>
+                        <!-- Texto ampliado y forzado a la izquierda -->
+                        <p class="text-xl">Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit)</p>
                     </div>
-                    <div class="p-3 bg-blue-100 rounded-lg md:w-1/2">
+                    <!-- Cuadro 2: Consumo en Clases Medias (p-20) -->
+                    <div class="p-20 bg-blue-100 rounded-lg md:w-1/2 text-left">
                         <strong class="text-blue-700">Consumo en Clases Medias:</strong>
-                        <p>Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
+                        <!-- Texto ampliado y forzado a la izquierda -->
+                        <p class="text-xl">Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
                     </div>
                 </div>
-                <!-- Texto destacado sobre el rol del psicólogo social - MODIFICADO -->
+                <!-- Texto destacado sobre el rol del psicólogo social (Este sí se mantiene centrado) -->
                 <div class="mt-6 p-4 bg-gray-100 border-2 border-gray-900 rounded-lg text-center text-xl font-bold text-gray-900 shadow-inner">
                     El rol del psicólogo social es criticar y desnaturalizar esta articulación estructural de la desigualdad
                 </div>
@@ -140,13 +176,15 @@
         </div>
     </header>
 
-    <!-- Sección Principal de Contenido (Conceptos y Autores) --><main class="max-w-6xl mx-auto p-4 md:p-8">
+    <!-- Sección Principal de Contenido (Conceptos y Autores) -->
+    <main id="ejes" class="max-w-6xl mx-auto px-4 md:px-8 pt-32 pb-8">
 
         <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
             Tres Ejes Conceptuales del Quehacer
         </h2>
 
-        <!-- Eje 1: Maite Rodrigou (Construccionismo Social) --><div id="rodrigou-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-rose-500" onclick="toggleConcept('rodrigou-card')">
+        <!-- Eje 1: Maite Rodrigou (Construccionismo Social) -->
+        <div id="rodrigou-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-rose-500" onclick="toggleConcept('rodrigou-card')">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-rose-700 flex items-center">
                     <svg class="icon-svg text-rose-500 mr-3" viewBox="0 0 24 24">
@@ -192,7 +230,8 @@
             </div>
         </div>
 
-        <!-- Eje 2: Marisela Montenegro (Intervención Social Situada) --><div id="montenegro-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-blue-500" onclick="toggleConcept('montenegro-card')">
+        <!-- Eje 2: Marisela Montenegro (Intervención Social Situada) -->
+        <div id="montenegro-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-blue-500" onclick="toggleConcept('montenegro-card')">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-blue-700 flex items-center">
                     <svg class="icon-svg text-blue-500 mr-3" viewBox="0 0 24 24">
@@ -238,7 +277,8 @@
             </div>
         </div>
 
-        <!-- Eje 3: Antar Martínez Guzmán (Involucramiento Colectivo) --><div id="martinez-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-green-500" onclick="toggleConcept('martinez-card')">
+        <!-- Eje 3: Antar Martínez Guzmán (Involucramiento Colectivo) -->
+        <div id="martinez-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-green-500" onclick="toggleConcept('martinez-card')">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-green-700 flex items-center">
                     <svg class="icon-svg text-green-500 mr-3" viewBox="0 0 24 24">
@@ -284,29 +324,44 @@
             </div>
         </div>
 
-        <!-- Resumen Gráfico y Conclusión --><div class="mt-10 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
-            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+        <!-- Resumen Gráfico y Conclusión (Con mt-48) -->
+        <div class="mt-48 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
+            <!-- Se MANTIENE el id="rol-critico" en el título h3 -->
+            <h3 id="rol-critico" class="text-2xl font-bold text-gray-800 mb-4 flex items-center justify-center">
                 <svg class="icon-svg text-gray-600 mr-2" viewBox="0 0 24 24">
                     <path d="M12 2L4 5v6.09c0 4.54 2.37 8.64 5.5 10.91V22h5v-3.91c3.13-2.27 5.5-6.37 5.5-10.91V5l-8-3zm-1 14H8v-2h3v2zm0-4H8V7h3v5z"/>
                 </svg>
                 Síntesis del Rol Crítico del Psicólogo Social
             </h3>
-            <p class="text-gray-700 mb-4">Ante la problemática de los consumos y la desigualdad en su representación mediática, el/la psicóloga social debe transformarse en un agente de deconstrucción del sentido común estigmatizante, que promueve el diálogo de saberes situados y que actúa en un plano de involucramiento colectivo, reconociéndose como parte de la red social que busca transformar.</p>
+            <p class="text-gray-700 mb-4 text-center">Ante la problemática de los consumos y la desigualdad en su representación mediática, el/la psicóloga social debe transformarse en un agente de deconstrucción del sentido común estigmatizante, que promueve el diálogo de saberes situados y que actúa en un plano de involucramiento colectivo, reconociéndose como parte de la red social que busca transformar.</p>
+            
+            <!-- Los cuadros mantienen el relleno vertical py-40 -->
             <div class="grid md:grid-cols-3 gap-4 text-center mt-6">
-                <div class="p-4 bg-indigo-200 text-indigo-800 rounded-lg font-bold shadow-sm">
+                <!-- EJE 1: Deconstrucción (RODRIGOU) - Color Rose -->
+                <div class="px-4 py-40 bg-rose-200 text-rose-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
                     <span class="text-xl">🔨</span> Deconstrucción del Sentido Común Estigmatizante.
                 </div>
-                <div class="p-4 bg-blue-200 text-blue-800 rounded-lg font-bold shadow-sm">
+                <!-- EJE 2: Diálogo (MONTENEGRO) - Color Azul -->
+                <div class="px-4 py-40 bg-blue-200 text-blue-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
                     <span class="text-xl">🗣️</span> Diálogo de Saberes Situados y Concientización.
                 </div>
-                <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold shadow-sm">
+                <!-- EJE 3: Involucramiento (MARTÍNEZ) - Color Verde -->
+                <div class="px-4 py-40 bg-green-200 text-green-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
                     <span class="text-xl">🕸️</span> Involucramiento Colectivo y Ruptura de la Exterioridad.
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Script para la Interactividad (Acordeón de Conceptos) --><script>
+    <!-- Pie de Página (NUEVO) -->
+    <footer class="max-w-6xl mx-auto px-4 md:px-8 pt-12 pb-8 mt-16 border-t border-gray-300">
+        <p class="text-center text-sm text-gray-600">
+            Análisis de Problemática bajo tutoría de la Cátedra de Psicología Social - Universidad Nacional de Córdoba, Noviembre del 2025.
+        </p>
+    </footer>
+
+    <!-- Script para la Interactividad (Acordeón de Conceptos) -->
+    <script>
         /**
          * Función para alternar la visibilidad del contenido de las tarjetas conceptuales.
          * @param {string} cardId - El ID de la tarjeta a alternar.
