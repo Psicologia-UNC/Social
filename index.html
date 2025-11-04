@@ -10,9 +10,7 @@
         /* Configuración de la fuente Inter y estilos base */
         html {
             scroll-behavior: smooth; /* Para el desplazamiento suave de los enlaces de anclaje */
-            /* AJUSTE FINAL PARA COMODIDAD VISUAL: 
-               Aumentado a 85px para crear un espacio de lectura cómodo 
-               entre el título de la sección y la barra de navegación fija. */
+            /* AJUSTE FINAL PARA COMODIDAD VISUAL: Aumentado a 85px para crear un espacio de lectura cómodo */
             scroll-padding-top: 85px; 
         }
         body {
@@ -154,18 +152,20 @@
                 </h2>
                 
                 <!-- Contenedor con alineación de texto a la izquierda, por lo que quitamos el text-center del padre -->
-                <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm text-left">
+                <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm">
                     <!-- Cuadro 1: Consumo en Sectores Populares (p-20) -->
-                    <div class="p-20 bg-red-100 rounded-lg md:w-1/2 text-left">
-                        <strong class="text-red-700">Consumo en Sectores Populares:</strong>
-                        <!-- Texto ampliado y forzado a la izquierda -->
-                        <p class="text-xl">Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit)</p>
+                    <!-- Se mantienen el centrado y el título grande -->
+                    <div class="p-20 bg-red-100 rounded-lg md:w-1/2 text-center">
+                        <strong class="text-red-700 text-lg">CONSUMO EN SECTORES POPULARES:</strong>
+                        <!-- CLASE CAMBIADA: de text-xl a text-base -->
+                        <p class="text-base">Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit)</p>
                     </div>
                     <!-- Cuadro 2: Consumo en Clases Medias (p-20) -->
-                    <div class="p-20 bg-blue-100 rounded-lg md:w-1/2 text-left">
-                        <strong class="text-blue-700">Consumo en Clases Medias:</strong>
-                        <!-- Texto ampliado y forzado a la izquierda -->
-                        <p class="text-xl">Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
+                    <!-- Se mantienen el centrado y el título grande -->
+                    <div class="p-20 bg-blue-100 rounded-lg md:w-1/2 text-center">
+                        <strong class="text-blue-700 text-lg">CONSUMO EN CLASES MEDIAS:</strong>
+                        <!-- CLASE CAMBIADA: de text-xl a text-base -->
+                        <p class="text-base">Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
                     </div>
                 </div>
                 <!-- Texto destacado sobre el rol del psicólogo social (Este sí se mantiene centrado) -->
