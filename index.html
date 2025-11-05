@@ -10,7 +10,7 @@
         /* Configuración de la fuente Inter y estilos base */
         html {
             scroll-behavior: smooth; /* Para el desplazamiento suave de los enlaces de anclaje */
-            /* AJUSTE FINAL PARA COMODIDAD VISUAL: Aumentado a 85px para crear un espacio de lectura cómodo */
+            /* AJUSTE FINAL PARA COMODIDAD VISUAL: Mantenemos el scroll-padding para compensar la barra fija */
             scroll-padding-top: 85px; 
         }
         body {
@@ -109,8 +109,8 @@
 </head>
 <body class="min-h-screen">
 
-    <!-- Barra de Navegación Fija (ACTUALIZADA: Borde más oscuro: border-rose-900) -->
-    <nav class="fixed top-3 max-w-4xl mx-auto inset-x-0 z-20 shadow-2xl bg-rose-50 rounded-xl border-2 border-rose-900 px-4">
+    <!-- Barra de Navegación Fija (Posición top-3) -->
+    <nav class="fixed top-3 max-w-4xl mx-auto inset-x-0 z-20 shadow-xl bg-rose-50 rounded-xl border-2 border-rose-900 px-4">
         <div class="flex justify-between items-center py-2">
             <!-- Título de la Cátedra (Izquierda) - Color Negro -->
             <div class="text-lg font-extrabold text-black tracking-tight">
@@ -135,7 +135,8 @@
     <!-- Encabezado Llamativo con Gráfico Conceptual (Visualización de la Problemática Central) -->
     <header id="inicio" class="gradient-bg text-white p-8 md:p-12 shadow-lg">
         <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 pt-40">
+            <!-- Reducimos el padding superior de pt-40 a pt-32 -->
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 pt-32">
                 El Quehacer del/a Psicólogo/a Social
             </h1>
             <p class="text-xl md:text-2xl font-light opacity-90">
