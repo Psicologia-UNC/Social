@@ -99,6 +99,29 @@
         .expand-icon {
             line-height: 1; /* Asegura que el texto +/- no distorsione la altura */
         }
+
+        /* --- NUEVO: Estilos para la imagen maximizada --- */
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain; /* Asegura que la imagen sea visible sin cortarse */
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+            z-index: 9999; /* Asegura que esté por encima de todo */
+            cursor: zoom-out; /* Indica que se puede hacer clic para cerrar */
+            padding: 20px; /* Pequeño margen */
+            box-sizing: border-box;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fullscreen-image.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -350,9 +373,11 @@
             </div>
         </div>
            <img 
+            id="quehaceres-img"
             src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" 
             alt="Quehaceres" 
-            class="mb-8 w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto"
+            class="mb-8 w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto cursor-zoom-in"
+            onclick="toggleFullscreenImage()"
         >
             </div>
         </div>
@@ -363,6 +388,8 @@
             Análisis de Problemática bajo tutoría de la Cátedra de Psicología Social - Universidad Nacional de Córdoba, Noviembre del 2025.
         </p>
     </footer>
+
+    <img id="fullscreen-viewer" class="fullscreen-image" src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" alt="Quehaceres maximizada" onclick="toggleFullscreenImage()">
 
     <script>
         /**
@@ -404,6 +431,27 @@
             }
         }
 
+        /**
+         * NUEVO: Función para alternar el modo de imagen a pantalla completa.
+         */
+        function toggleFullscreenImage() {
+            const fullscreenViewer = document.getElementById('fullscreen-viewer');
+            const isActive = fullscreenViewer.classList.contains('active');
+
+            if (isActive) {
+                // Cierra el modo pantalla completa
+                fullscreenViewer.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restaura el scroll del cuerpo
+                document.getElementById('quehaceres-img').classList.remove('hidden'); // Muestra la imagen original si se ocultó
+            } else {
+                // Abre el modo pantalla completa
+                fullscreenViewer.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evita el scroll del cuerpo cuando la imagen está maximizada
+                // Opcional: Podrías hacer que la imagen original desaparezca para evitar duplicidad, pero no es estrictamente necesario con 'position: fixed'
+                // document.getElementById('quehaceres-img').classList.add('hidden');
+            }
+        }
+
         // Inicializa el estado después de que la página cargue
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.concept-card').forEach(card => {
@@ -420,6 +468,13 @@
                         toggleConcept(card.id);
                     }
                 });
+            });
+
+            // NUEVO: Permite cerrar la imagen maximizada con la tecla ESC
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && document.getElementById('fullscreen-viewer').classList.contains('active')) {
+                    toggleFullscreenImage();
+                }
             });
         });
     </script>
