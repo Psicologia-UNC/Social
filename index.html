@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quehacer del Psicólogo Social ante Consumos Problemáticos</title>
-    <!-- Carga de Tailwind CSS para estilos modernos y responsivos --><script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Configuración de la fuente Inter y estilos base */
         html {
             scroll-behavior: smooth; /* Para el desplazamiento suave de los enlaces de anclaje */
-            /* AJUSTE FINAL PARA COMODIDAD VISUAL: Mantenemos el scroll-padding para compensar la barra fija */
-            scroll-padding-top: 85px; 
+            scroll-padding-top: 85px; /* Compensa la barra de navegación fija */
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Gris claro */
             transition: background-color 0.3s ease;
         }
+        /* Estilos de las tarjetas conceptuales (acordeón) */
         .concept-card {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -30,14 +30,15 @@
         .concept-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out;
+            /* Se ajusta la transición para incluir max-height y padding */
+            transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out; 
             padding-top: 0;
             padding-bottom: 0;
-            position: relative; /* Necesario para que el pseudo-elemento de fondo funcione */
+            position: relative; 
         }
-        /* Aumentamos la altura máxima para el contenido desarrollado */
         .concept-card.active .concept-content {
-            max-height: 800px; 
+            /* max-height se manejará dinámicamente con JavaScript para mayor precisión, pero se mantiene un valor alto de fallback/visual */
+            max-height: 1000px; /* Aumentado ligeramente para más holgura */ 
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
@@ -50,15 +51,12 @@
             fill: currentColor;
         }
 
-        /* Estilos específicos para las imágenes de fondo en los apartados */
+        /* --- Estilos de las Imágenes de Fondo --- */
         #rodrigou-card .concept-content::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://i.postimg.cc/kXdpkrwf/critica-social.png'); /* Crítica Social */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://i.postimg.cc/kXdpkrwf/critica-social.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -66,58 +64,51 @@
             z-index: 0;
             pointer-events: none;
         }
-        
         #montenegro-card .concept-content::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://i.postimg.cc/xdqxK9jP/Dialogo.png'); /* Diálogo */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://i.postimg.cc/xdqxK9jP/Dialogo.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4;
+            opacity: 0.3;
             z-index: 0;
             pointer-events: none;
         }
-
         #martinez-card .concept-content::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://i.postimg.cc/SsMgvVMX/Captura-de-Pantalla-2025-11-03-a-la-s-19-54-06.png'); /* Involucramiento */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://i.postimg.cc/SsMgvVMX/Captura-de-Pantalla-2025-11-03-a-la-s-19-54-06.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.4;
+            opacity: 0.3;
             z-index: 0;
             pointer-events: none;
         }
-
 
         /* Asegurar que el texto esté por encima de la imagen de fondo en todas las secciones */
         .concept-content > * {
             position: relative;
             z-index: 1;
         }
+        
+        /* Ajuste de accesibilidad para asegurar el contraste del icono de expansión/cierre */
+        .expand-icon {
+            line-height: 1; /* Asegura que el texto +/- no distorsione la altura */
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- Barra de Navegación Fija (Posición top-3) -->
     <nav class="fixed top-3 max-w-4xl mx-auto inset-x-0 z-20 shadow-xl bg-rose-50 rounded-xl border-2 border-rose-900 px-4">
         <div class="flex justify-between items-center py-2">
-            <!-- Título de la Cátedra (Izquierda) - Color Negro -->
             <div class="text-lg font-extrabold text-black tracking-tight">
                 Cátedra de Psicología Social - UNC
             </div>
 
-            <!-- Botones de Navegación (Derecha) - Hover Rose -->
             <div class="flex space-x-4">
                 <a href="#inicio" class="text-sm font-semibold text-gray-700 hover:text-rose-600 transition duration-150 p-2 rounded-lg hover:bg-rose-100">
                     Inicio
@@ -126,24 +117,26 @@
                     Tres Ejes Conceptuales
                 </a>
                 <a href="#rol-critico" class="text-sm font-semibold text-gray-700 hover:text-rose-600 transition duration-150 p-2 rounded-lg hover:bg-rose-100">
-                    Rol Crítico
+                    Quehacer Crítico
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Encabezado Llamativo con Gráfico Conceptual (Visualización de la Problemática Central) -->
     <header id="inicio" class="gradient-bg text-white p-8 md:p-12 shadow-lg">
         <div class="max-w-6xl mx-auto text-center">
-            <!-- Reducimos el padding superior de pt-40 a pt-32 -->
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4 pt-32">
                 El Quehacer del/la Psicólogo/a Social
             </h1>
-            <p class="text-xl md:text-2xl font-light opacity-90">
+            <p class="mb-8 text-xl md:text-2xl font-light opacity-90">
                 Reflexiones Conceptuales ante la Problemática de los Consumos y la Desigualdad Mediática
             </p>
+           <img 
+            src="https://i.postimg.cc/vZW0tP3T/2.png" 
+            alt="Des-información Mediática" 
+            class="mb-8 w-full h-auto rounded-xl shadow-xl border-4 border-gray-500 mx-auto"
+        >
 
-            <!-- Gráfico de la Problemática Central: Narrativas Desiguales -->
             <div class="mt-8 bg-white p-10 rounded-lg shadow-xl text-gray-800">
                 <h2 class="text-xl font-bold mb-3 flex items-center justify-center">
                     <svg class="icon-svg text-red-500 mr-2" viewBox="0 0 24 24">
@@ -152,41 +145,31 @@
                     El Nudo de la Problemática: Narrativas Desiguales
                 </h2>
                 
-                <!-- Contenedor con alineación de texto a la izquierda, por lo que quitamos el text-center del padre -->
                 <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm">
-                    <!-- Cuadro 1: Consumo en Sectores Populares (p-20) -->
-                    <!-- TEXTO EN MAYÚSCULAS -->
                     <div class="p-20 bg-red-100 rounded-lg md:w-1/2 text-center">
                         <strong class="text-red-700 text-lg uppercase">Consumo en Sectores Populares:</strong>
-                        <!-- Texto reducido -->
                         <p class="text-base">Tratamiento mediático que <span class="font-semibold">estigmatiza y criminaliza</span> (Discurso del Déficit)</p>
                     </div>
-                    <!-- Cuadro 2: Consumo en Clases Medias (p-20) -->
-                    <!-- TEXTO EN MAYÚSCULAS -->
                     <div class="p-20 bg-blue-100 rounded-lg md:w-1/2 text-center">
                         <strong class="text-blue-700 text-lg uppercase">Consumo en Clases Medias:</strong>
-                        <!-- Texto reducido -->
                         <p class="text-base">Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
                     </div>
                 </div>
-                <!-- Texto destacado sobre el rol del psicólogo social (Este sí se mantiene centrado) -->
                 <div class="mt-6 p-4 bg-gray-100 border-2 border-gray-900 rounded-lg text-center text-xl font-bold text-gray-900 shadow-inner">
                     El quehacer se define por la mirada crítica, la desnaturalización y la acción colectiva
-
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Sección Principal de Contenido (Conceptos y Autores) -->
-    <main id="ejes" class="max-w-6xl mx-auto px-4 md:px-8 pt-32 pb-8">
+    <main id="ejes" class="max-w-6xl mx-auto px-4 md:px-8 pt-28 pb-8">
 
+       
         <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
             Tres Ejes Conceptuales del Quehacer
         </h2>
 
-        <!-- Eje 1: Maite Rodrigou (Construccionismo Social) -->
-        <div id="rodrigou-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-rose-500" onclick="toggleConcept('rodrigou-card')">
+        <div id="rodrigou-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-rose-500" onclick="toggleConcept('rodrigou-card')" role="button" aria-expanded="false" aria-controls="rodrigou-content" tabindex="0">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-rose-700 flex items-center">
                     <svg class="icon-svg text-rose-500 mr-3" viewBox="0 0 24 24">
@@ -194,12 +177,12 @@
                     </svg>
                     1. Deconstrucción y Crítica Social (Rodrigou)
                 </h3>
-                <span class="text-2xl font-bold text-rose-500">
+                <span class="text-2xl font-bold text-rose-500 expand-icon" aria-hidden="true">
                     +
                 </span>
             </div>
 
-            <div class="concept-content mt-4" data-open="false">
+            <div id="rodrigou-content" class="concept-content mt-4" data-open="false">
                 <p class="text-gray-600 mb-4 border-l-4 border-indigo-300 pl-3 italic">
                     La Psicología Social, desde el enfoque construccionista, plantea que las categorías como "juventud", "consumo problemático" o "peligro social" son <span class="font-bold text-rose-700">artefactos sociales</span>, productos de intercambios situados histórica y culturalmente.
                 </p>
@@ -239,8 +222,7 @@
             </div>
         </div>
 
-        <!-- Eje 2: Marisela Montenegro (Intervención Social Situada) -->
-        <div id="montenegro-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-blue-500" onclick="toggleConcept('montenegro-card')">
+        <div id="montenegro-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-blue-500" onclick="toggleConcept('montenegro-card')" role="button" aria-expanded="false" aria-controls="montenegro-content" tabindex="0">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-blue-700 flex items-center">
                     <svg class="icon-svg text-blue-500 mr-3" viewBox="0 0 24 24">
@@ -248,12 +230,12 @@
                     </svg>
                     2. Diálogo y Perspectiva Situada (Montenegro)
                 </h3>
-                <span class="text-2xl font-bold text-blue-500">
+                <span class="text-2xl font-bold text-blue-500 expand-icon" aria-hidden="true">
                     +
                 </span>
             </div>
 
-            <div class="concept-content mt-4" data-open="false">
+            <div id="montenegro-content" class="concept-content mt-4" data-open="false">
                 <p class="text-gray-600 mb-4 border-l-4 border-blue-300 pl-3 italic">
                     Montenegro sitúa la problemática como producto de estructuras sociales donde se dan <span class="font-bold text-blue-700">relaciones de opresión</span>. El quehacer se centra en un modelo participativo, incorporando el conocimiento local.
                 </p>
@@ -293,8 +275,7 @@
             </div>
         </div>
 
-        <!-- Eje 3: Antar Martínez Guzmán (Involucramiento Colectivo) -->
-        <div id="martinez-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-green-500" onclick="toggleConcept('martinez-card')">
+        <div id="martinez-card" class="concept-card bg-white p-6 rounded-xl mb-6 transform hover:scale-[1.01] transition-transform duration-300 shadow-md border-t-4 border-green-500" onclick="toggleConcept('martinez-card')" role="button" aria-expanded="false" aria-controls="martinez-content" tabindex="0">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-green-700 flex items-center">
                     <svg class="icon-svg text-green-500 mr-3" viewBox="0 0 24 24">
@@ -302,12 +283,12 @@
                     </svg>
                     3. La Metáfora del Involucramiento (Martínez Guzmán)
                 </h3>
-                <span class="text-2xl font-bold text-green-500">
+                <span class="text-2xl font-bold text-green-500 expand-icon" aria-hidden="true">
                     +
                 </span>
             </div>
 
-            <div class="concept-content mt-4" data-open="false">
+            <div id="martinez-content" class="concept-content mt-4" data-open="false">
                 <p class="text-gray-600 mb-4 border-l-4 border-green-300 pl-3 italic">
                     Martínez Guzmán propone cambiar la metáfora de la "intervención" (exterioridad, control racional del experto, cuerpo pasivo) por la de <span class="font-bold text-green-700">Involucramiento</span>.
                 </p>
@@ -340,64 +321,65 @@
                         <span class="text-green-500 font-bold mr-2 mt-1">📝</span>
                         <div class="flex-1">
                             <strong class="block text-base text-green-700">Línea de Acción/Dispositivo:</strong>
-                            <p>Conversatorios abiertos con los jóvenes sobre temas que a ellos realmente les importen, como la violencia, el futuro, el consumo o la pertenencia. La idea no sería dar lecciones, sino generar un espacio horizontal de diálogo, donde la palabra circule y funcione como herramienta de simbolización. Poner en palabras lo que viven, lo que sienten, sin juicios morales y construir sentido colectivamente.</span>.</p>
+                            <p>Conversatorios abiertos con los jóvenes sobre temas que a ellos realmente les importen, como la violencia, el futuro, el consumo o la pertenencia. La idea no sería dar lecciones, sino generar un espacio horizontal de diálogo, donde la palabra circule y funcione como herramienta de simbolización. Poner en palabras lo que viven, lo que sienten, sin juicios morales y construir sentido colectivamente.</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Resumen Gráfico y Conclusión (Con mt-48) -->
         <div class="mt-48 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
-            <!-- Se MANTIENE el id="rol-critico" en el título h3 -->
             <h3 id="rol-critico" class="text-2xl font-bold text-gray-800 mb-4 flex items-center justify-center">
                 <svg class="icon-svg text-gray-600 mr-2" viewBox="0 0 24 24">
                     <path d="M12 2L4 5v6.09c0 4.54 2.37 8.64 5.5 10.91V22h5v-3.91c3.13-2.27 5.5-6.37 5.5-10.91V5l-8-3zm-1 14H8v-2h3v2zm0-4H8V7h3v5z"/>
                 </svg>
                 Síntesis del Rol Crítico del Psicólogo Social
             </h3>
-            <p class="text-gray-700 mb-4 text-center">Ante la problemática de los consumos y la desigualdad en su representación mediática, el/la psicólogo/a social debe transformarse en un agente de deconstrucción del sentido común estigmatizante, que promueve el diálogo de saberes situados y que actúa en un plano de involucramiento colectivo, reconociéndose como parte de la red social que busca transformar.</p>
+            <p class="text-gray-700 mb-4 text-center">Ante la problemática de los consumos y la desigualdad en su representación mediática, el/la psicólogo/a social debe transformarse en un agente político de <span class="font-semibold">deconstrucción</span> del sentido común estigmatizante, que promueve el <span class="font-semibold">diálogo</span> de saberes situados y que actúa en un plano de <span class="font-semibold">involucramiento</span> colectivo, reconociéndose como parte de la red social que busca transformar</p>
             
-            <!-- Los cuadros mantienen el relleno vertical py-40 -->
             <div class="grid md:grid-cols-3 gap-4 text-center mt-6">
-                <!-- EJE 1: Deconstrucción (RODRIGOU) - Color Rose -->
                 <div class="px-4 py-40 bg-rose-200 text-rose-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
-                    <span class="text-xl">🔨</span> Deconstrucción del Sentido Común Estigmatizante.
+                    <span class="text-xl mr-2">🔨</span> Deconstrucción del Sentido Común Estigmatizante.
                 </div>
-                <!-- EJE 2: Diálogo (MONTENEGRO) - Color Azul -->
                 <div class="px-4 py-40 bg-blue-200 text-blue-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
-                    <span class="text-xl">🗣️</span> Diálogo de Saberes Situados y Concientización.
+                    <span class="text-xl mr-2">🗣️</span> Diálogo de Saberes Situados y Concientización.
                 </div>
-                <!-- EJE 3: Involucramiento (MARTÍNEZ) - Color Verde -->
                 <div class="px-4 py-40 bg-green-200 text-green-800 rounded-lg font-bold shadow-sm flex items-center justify-center">
-                    <span class="text-xl">🕸️</span> Involucramiento Colectivo y Ruptura de la Exterioridad.
+                    <span class="text-xl mr-2">🕸️</span> Involucramiento Colectivo y Ruptura de la Exterioridad.
                 </div>
+            </div>
+        </div>
+           <img 
+            src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" 
+            alt="Quehaceres" 
+            class="mb-8 w-full h-auto rounded-xl shadow-xl border-4 border-gray-400 mx-auto"
+        >
             </div>
         </div>
     </main>
 
-    <!-- Pie de Página (NUEVO) -->
     <footer class="max-w-6xl mx-auto px-4 md:px-8 pt-12 pb-8 mt-16 border-t border-gray-300">
         <p class="text-center text-sm text-gray-600">
             Análisis de Problemática bajo tutoría de la Cátedra de Psicología Social - Universidad Nacional de Córdoba, Noviembre del 2025.
         </p>
     </footer>
 
-    <!-- Script para la Interactividad (Acordeón de Conceptos) -->
     <script>
         /**
          * Función para alternar la visibilidad del contenido de las tarjetas conceptuales.
+         * Se ha optimizado el cálculo de maxHeight para la transición.
          * @param {string} cardId - El ID de la tarjeta a alternar.
          */
         function toggleConcept(cardId) {
             const card = document.getElementById(cardId);
             const content = card.querySelector('.concept-content');
-            const icon = card.querySelector('span:last-child'); // Selecciona el último span (+/-)
+            const icon = card.querySelector('.expand-icon'); // Usamos la nueva clase
             const isOpen = card.classList.contains('active');
 
             // Cierra la tarjeta si ya está abierta
             if (isOpen) {
                 card.classList.remove('active');
+                card.setAttribute('aria-expanded', 'false'); // Actualiza accesibilidad
                 content.style.maxHeight = '0';
                 icon.textContent = '+';
             } else {
@@ -405,17 +387,18 @@
                 document.querySelectorAll('.concept-card').forEach(c => {
                     if (c.id !== cardId) {
                         c.classList.remove('active');
-                        c.querySelector('.concept-content').style.maxHeight = '0';
-                        // Asegúrate de seleccionar el ícono correcto para cerrar
-                        const otherIcon = c.querySelector('span:last-child');
+                        c.setAttribute('aria-expanded', 'false'); // Actualiza accesibilidad
+                        const otherContent = c.querySelector('.concept-content');
+                        otherContent.style.maxHeight = '0';
+                        const otherIcon = c.querySelector('.expand-icon');
                         if (otherIcon) otherIcon.textContent = '+';
                     }
                 });
 
                 // Abre la tarjeta seleccionada
                 card.classList.add('active');
-                // Ajusta la altura máxima para la transición usando scrollHeight
-                // Se añade un margen de 50px para asegurar que todo el contenido sea visible
+                card.setAttribute('aria-expanded', 'true'); // Actualiza accesibilidad
+                // Establece la altura máxima al valor real del scrollHeight + un margen (para compensar el padding)
                 content.style.maxHeight = content.scrollHeight + 50 + "px"; 
                 icon.textContent = '–';
             }
@@ -425,8 +408,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.concept-card').forEach(card => {
                 const content = card.querySelector('.concept-content');
-                // Establece el estado inicial de max-height a 0 para que la transición funcione
-                content.style.maxHeight = '0';
+                // Se asegura el estado inicial para que la transición funcione
+                content.style.maxHeight = '0'; 
+            });
+            
+            // Permite la expansión/cierre al presionar Enter o Espacio
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.addEventListener('keypress', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        toggleConcept(card.id);
+                    }
+                });
             });
         });
     </script>
