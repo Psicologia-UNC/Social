@@ -100,7 +100,7 @@
             line-height: 1; /* Asegura que el texto +/- no distorsione la altura */
         }
 
-        /* --- NUEVO: Estilos para la imagen maximizada --- */
+        /* --- Estilos para la imagen maximizada --- */
         .fullscreen-image {
             position: fixed;
             top: 0;
@@ -376,7 +376,7 @@
             id="quehaceres-img"
             src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" 
             alt="Quehaceres" 
-            class="mb-8 w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto cursor-zoom-in"
+            class="mt-1 mb-8 max-w-5xl w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto cursor-zoom-in"
             onclick="toggleFullscreenImage()"
         >
             </div>
@@ -432,7 +432,7 @@
         }
 
         /**
-         * NUEVO: Función para alternar el modo de imagen a pantalla completa.
+         * Función para alternar el modo de imagen a pantalla completa.
          */
         function toggleFullscreenImage() {
             const fullscreenViewer = document.getElementById('fullscreen-viewer');
@@ -442,13 +442,11 @@
                 // Cierra el modo pantalla completa
                 fullscreenViewer.classList.remove('active');
                 document.body.style.overflow = 'auto'; // Restaura el scroll del cuerpo
-                document.getElementById('quehaceres-img').classList.remove('hidden'); // Muestra la imagen original si se ocultó
+                // No necesitamos mostrar la imagen original aquí si no la ocultamos al abrir el fullscreen
             } else {
                 // Abre el modo pantalla completa
                 fullscreenViewer.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Evita el scroll del cuerpo cuando la imagen está maximizada
-                // Opcional: Podrías hacer que la imagen original desaparezca para evitar duplicidad, pero no es estrictamente necesario con 'position: fixed'
-                // document.getElementById('quehaceres-img').classList.add('hidden');
             }
         }
 
@@ -470,7 +468,7 @@
                 });
             });
 
-            // NUEVO: Permite cerrar la imagen maximizada con la tecla ESC
+            // Permite cerrar la imagen maximizada con la tecla ESC
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape' && document.getElementById('fullscreen-viewer').classList.contains('active')) {
                     toggleFullscreenImage();
