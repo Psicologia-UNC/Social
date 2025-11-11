@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -130,6 +129,12 @@
             height: 350px; 
         }
 
+        /* Se agrega la clase de altura fija para las nuevas tarjetas flip en el header */
+        .header-card-fixed-height {
+            height: 250px; 
+            min-height: 100px;
+        }
+        
         .flip-card-wrapper {
             background-color: transparent;
             width: 100%;
@@ -157,14 +162,17 @@
             height: 100%;
             -webkit-backface-visibility: hidden; /* Oculta la parte posterior durante la rotación */
             backface-visibility: hidden;
-        }
-
-        .flip-card-back {
-            transform: rotateY(180deg);
-            display: flex;
+            display: flex; /* Asegura que el contenido se centre/justifique correctamente */
             justify-content: center;
             align-items: center;
             padding: 10px;
+            box-sizing: border-box;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+        }
+        
+        .flip-card-back {
+            transform: rotateY(180deg);
         }
 
         .flip-image {
@@ -205,9 +213,11 @@
                 Reflexiones Conceptuales ante la Problemática de los Consumos y la Desigualdad Mediática
             </p>
            <img 
+            id="desinformacion-img"
             src="https://i.postimg.cc/vZW0tP3T/2.png" 
             alt="Des-información Mediática" 
-            class="mb-8 w-full h-auto rounded-xl shadow-xl border-4 border-gray-500 mx-auto"
+            class="mb-8 max-w-5xl w-full h-auto rounded-xl shadow-xl border-4 border-gray-500 mx-auto cursor-zoom-in"
+            onclick="toggleFullscreenImage('desinformacion-img')"
         >
 
             <div class="mt-8 bg-white p-10 rounded-lg shadow-xl text-gray-800">
@@ -219,15 +229,40 @@
                 </h2>
                 
                 <div class="md:flex md:space-x-4 space-y-4 md:space-y-0 text-sm">
-                    <div class="p-20 bg-red-100 rounded-lg md:w-1/2 text-center">
-                        <strong class="text-red-700 text-lg uppercase">Consumo en Sectores Populares:</strong>
-                        <p class="text-base">Construcción mediática que <span class="font-semibold">estigmatiza y criminaliza</span></p>
+                    
+                    <div class="md:w-1/2 text-center header-card-fixed-height" onclick="flipCard('consumo-popular-flip-container')">
+                        <div id="consumo-popular-flip-container" class="flip-card-wrapper">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front bg-red-100 text-center text-gray-800">
+                                    <div class="p-4">
+                                        <strong class="text-red-700 text-lg uppercase">Consumo en Sectores Populares:</strong>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back bg-red-100 text-center text-gray-800">
+                                    <div class="p-4">
+                                        <p class="text-base">Construcción mediática que <span class="font-semibold text-red-700">estigmatiza y criminaliza</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-20 bg-blue-100 rounded-lg md:w-1/2 text-center">
-                        <strong class="text-blue-700 text-lg uppercase">Consumo en Clases Medias:</strong>
-                        <p class="text-base">Tratamiento mediático que lo enmarca como <span class="font-semibold">tragedia individual</span></p>
+                    <div class="md:w-1/2 text-center header-card-fixed-height" onclick="flipCard('consumo-medio-flip-container')">
+                        <div id="consumo-medio-flip-container" class="flip-card-wrapper">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front bg-blue-100 text-center text-gray-800">
+                                    <div class="p-4">
+                                        <strong class="text-blue-700 text-lg uppercase">Consumo en Clases Medias:</strong>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back bg-blue-100 text-center text-gray-800">
+                                    <div class="p-4">
+                                        <p class="text-base">Tratamiento mediático que lo enmarca como <span class="font-semibold text-blue-700">tragedia individual</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    </div>
                 <div class="mt-6 p-4 bg-gray-100 border-2 border-gray-900 rounded-lg text-center text-xl font-bold text-gray-900 shadow-inner">
                     El abordaje exige mirada crítica, acción colectiva y desnaturalizar la estigmatización<br>Atender las significaciones que atraviesan el consumo
                 </div>
@@ -400,8 +435,17 @@
                 </ul>
             </div>
         </div>
+        
+        
+<img 
+            id="quehaceres-img"
+            src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" 
+            alt="Quehaceres" 
+            class="mt-16 mb-8 max-w-5xl w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto cursor-zoom-in"
+            onclick="toggleFullscreenImage('quehaceres-img')"
+        >
 
-        <div class="mt-48 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
+        <div class="mt-28 p-6 md:p-8 bg-gray-100 rounded-xl shadow-inner">
             <h3 id="rol-critico" class="text-2xl font-bold text-gray-800 mb-4 flex items-center justify-center">
                 <svg class="icon-svg text-gray-800 mr-2" viewBox="0 0 24 24">
                     <path d="M12 2L4 5v6.09c0 4.54 2.37 8.64 5.5 10.91V22h5v-3.91c3.13-2.27 5.5-6.37 5.5-10.91V5l-8-3zm-1 14H8v-2h3v2zm0-4H8V7h3v5z"/>
@@ -451,24 +495,17 @@
                 </div>
             </div>
         </div>
-           <img 
-            id="quehaceres-img"
-            src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" 
-            alt="Quehaceres" 
-            class="mt-1 mb-8 max-w-5xl w-full h-auto rounded-xl shadow-xl border-2 border-gray-400 mx-auto cursor-zoom-in"
-            onclick="toggleFullscreenImage()"
-        >
-            </div>
-        </div>
     </main>
 
-    <footer class="max-w-6xl mx-auto px-4 md:px-8 pt-12 pb-8 mt-16 border-t border-gray-300">
+    <footer class="max-w-6xl mx-auto px-4 md:px-8 pt-12 pb-8 mt-4 border-t border-gray-300">
         <p class="text-center text-sm text-gray-600">
             Análisis de Problemática bajo tutoría de la Cátedra de Psicología Social - Universidad Nacional de Córdoba, Noviembre del 2025.
         </p>
     </footer>
 
-    <img id="fullscreen-viewer" class="fullscreen-image" src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" alt="Quehaceres maximizada" onclick="toggleFullscreenImage()">
+    <img id="fullscreen-viewer-quehaceres" class="fullscreen-image" src="https://i.postimg.cc/VN9yNxv2/mas-chico-2.png" alt="Quehaceres maximizada" onclick="toggleFullscreenImage()">
+    <img id="fullscreen-viewer-desinformacion" class="fullscreen-image" src="https://i.postimg.cc/vZW0tP3T/2.png" alt="Des-información Mediática maximizada" onclick="toggleFullscreenImage()">
+
 
     <script>
         /**
@@ -512,18 +549,42 @@
 
         /**
          * Función para alternar el modo de imagen a pantalla completa.
+         * @param {string} clickedImageId - El ID de la imagen que fue clickeada (e.g., 'quehaceres-img', 'desinformacion-img').
          */
-        function toggleFullscreenImage() {
-            const fullscreenViewer = document.getElementById('fullscreen-viewer');
-            const isActive = fullscreenViewer.classList.contains('active');
+        function toggleFullscreenImage(clickedImageId) {
+            const fullscreenViewerQuehaceres = document.getElementById('fullscreen-viewer-quehaceres');
+            const fullscreenViewerDesinformacion = document.getElementById('fullscreen-viewer-desinformacion');
+
+            let targetViewer;
+            if (clickedImageId === 'quehaceres-img') {
+                targetViewer = fullscreenViewerQuehaceres;
+                // Asegúrate de que la otra imagen esté cerrada
+                fullscreenViewerDesinformacion.classList.remove('active');
+            } else if (clickedImageId === 'desinformacion-img') {
+                targetViewer = fullscreenViewerDesinformacion;
+                // Asegúrate de que la otra imagen esté cerrada
+                fullscreenViewerQuehaceres.classList.remove('active');
+            } else {
+                // Si se llama sin un ID específico (ej. desde el viewer mismo para cerrarlo)
+                // cierra el que esté activo actualmente.
+                if (fullscreenViewerQuehaceres.classList.contains('active')) {
+                    targetViewer = fullscreenViewerQuehaceres;
+                } else if (fullscreenViewerDesinformacion.classList.contains('active')) {
+                    targetViewer = fullscreenViewerDesinformacion;
+                } else {
+                    return; // No hay ninguna imagen activa para cerrar
+                }
+            }
+
+            const isActive = targetViewer.classList.contains('active');
 
             if (isActive) {
-                // Cierra el modo pantalla completa
-                fullscreenViewer.classList.remove('active');
+                // Cierra el modo pantalla completa de la imagen actual
+                targetViewer.classList.remove('active');
                 document.body.style.overflow = 'auto'; // Restaura el scroll del cuerpo
             } else {
-                // Abre el modo pantalla completa
-                fullscreenViewer.classList.add('active');
+                // Abre el modo pantalla completa de la imagen clickeada
+                targetViewer.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Evita el scroll del cuerpo cuando la imagen está maximizada
             }
         }
@@ -558,8 +619,14 @@
 
             // Permite cerrar la imagen maximizada con la tecla ESC
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && document.getElementById('fullscreen-viewer').classList.contains('active')) {
-                    toggleFullscreenImage();
+                if (event.key === 'Escape') {
+                    // Cierra ambos visores si están activos
+                    if (document.getElementById('fullscreen-viewer-quehaceres').classList.contains('active')) {
+                        toggleFullscreenImage('quehaceres-img');
+                    }
+                    if (document.getElementById('fullscreen-viewer-desinformacion').classList.contains('active')) {
+                        toggleFullscreenImage('desinformacion-img');
+                    }
                 }
             });
         });
